@@ -2,17 +2,17 @@ import styled from "styled-components";
 
 const Wrapper = styled.section`
   display: flex;
-  position: absolute;
   width: 100vw;
-  bottom: 0;
-  background-color: ${(p) => p.theme.khaki};
-  color: ${(p) => p.theme.yellow};
+  /* background-color: ${(p) => p.theme.darkBrown}; */
+  border-top: ${(p) => p.theme.border};
   padding: 40px 25px;
+  z-index: 999;
 `;
 
 const InfoContainer = styled.section`
   padding-right: 40px;
-  border-right: 1px solid ${(p) => p.theme.yellow};
+  border-right: 1px solid ${(p) => p.theme.black};
+  color: ${(p) => p.theme.black};
 `;
 
 const Info = styled.ul`

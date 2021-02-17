@@ -17,19 +17,19 @@ export default createGlobalStyle`
         color: black;
         text-decoration: none;
     }
-    a:link {
-        color: black;
-        text-decoration: none;
-    }
     a:visited {
         color: black;
         text-decoration: none;
     }
     a:hover {
-        color: black;
         text-decoration: none;
+        cursor: pointer;
     }
     input:focus{
         outline:none;
+    }
+    button{
+        all: unset;
+        cursor: pointer;
     }
 `;
