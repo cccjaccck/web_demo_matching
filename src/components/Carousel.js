@@ -108,7 +108,7 @@ const Carousel = () => {
         </CarouselButton>
         <CardContainer>
           {DATA.map((data) => (
-            <CarouselCard src={data.src} />
+            <CarouselCard key={data.name} src={data.src} />
           ))}
         </CardContainer>
         <CarouselButton onClick={nextSlide}>

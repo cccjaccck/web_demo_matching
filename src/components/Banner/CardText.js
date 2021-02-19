@@ -12,7 +12,7 @@ const Container = styled.div`
     color: ${(p) => p.color};
     border-color: ${(p) => p.color};
 
-    transition: all 1s ease;
+    transition: all 0.3s ease;
     opacity: 0;
     opacity: ${(p) => p.move === 0 && "1"};
   }
@@ -51,7 +51,8 @@ const Desc = styled.span`
 `;
 
 const Button = styled.button`
-  margin: 0.5em 2.1rem;
+  margin: 0 2.1rem;
+  margin-top: 0.5em;
   padding: 0 15px;
   line-height: 35px;
   font-size: 1rem;

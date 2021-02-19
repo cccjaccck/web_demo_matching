@@ -16,6 +16,7 @@ export default createGlobalStyle`
     a {
         color: black;
         text-decoration: none;
+        cursor: pointer
     }
     a:visited {
         color: black;

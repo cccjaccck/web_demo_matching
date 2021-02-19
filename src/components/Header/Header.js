@@ -58,7 +58,9 @@ const Header = () => {
   return (
     <Wrapper>
       <Top>
-        <TopText>Guest</TopText>
+        <a href="/login">
+          <TopText>Guest</TopText>
+        </a>
         <TopIcon>
           <LocalMallOutlinedIcon />
         </TopIcon>

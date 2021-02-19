@@ -105,6 +105,7 @@ const Card = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 `;
+
 const CardImageContainer = styled.div`
   position: absolute;
   width: 300.3%;
@@ -112,6 +113,7 @@ const CardImageContainer = styled.div`
   left: 50%;
   transform: translateX(-50%);
 `;
+
 const CardImage = styled.div`
   display: inline-block;
   background-image: url(${(p) => p.src});

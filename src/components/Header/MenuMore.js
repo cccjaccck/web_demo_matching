@@ -97,8 +97,8 @@ const SectionPressenter = ({ data }) => {
         <TitleText>{title}</TitleText>
       </Title>
       <SubWrap>
-        {subs.map((sub) => (
-          <Sub>
+        {subs.map((sub, index) => (
+          <Sub key={index}>
             <SubText>{sub}</SubText>
           </Sub>
         ))}
