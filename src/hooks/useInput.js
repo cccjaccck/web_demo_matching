@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const useInput = (defaultValue, limit) => {
+const useInput = (defaultValue, limit = 30) => {
   const [value, setValue] = useState(defaultValue);
 
   const onChange = (e) => {
