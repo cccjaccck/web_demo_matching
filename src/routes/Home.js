@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useIsLoggedIn } from "../AuthContext";
 
-import Banner from "../components/Banner/Banner";
+import Banner from "../components/Banner";
 import EventBanner from "../components/EeventBanner";
 
 const Wrapper = styled.div`

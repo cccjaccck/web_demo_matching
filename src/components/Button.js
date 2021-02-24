@@ -8,8 +8,8 @@ const Box = styled.button`
   text-align: center;
 `;
 
-const Button = ({ text }) => {
-  return <Box>{text}</Box>;
+const Button = ({ text, onClick }) => {
+  return <Box onClick={onClick}>{text}</Box>;
 };
 
 export default Button;

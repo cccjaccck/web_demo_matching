@@ -6,7 +6,6 @@ const Wrapper = styled.section`
   /* background-color: ${(p) => p.theme.darkBrown}; */
   border-top: ${(p) => p.theme.border};
   padding: 40px 25px;
-  z-index: 999;
 `;
 
 const InfoContainer = styled.section`
@@ -26,8 +25,6 @@ const InfoTitle = styled.li`
 const InfoText = styled.li`
   font-size: 12px;
 `;
-
-const Text = styled.span``;
 
 const Footer = () => {
   return (

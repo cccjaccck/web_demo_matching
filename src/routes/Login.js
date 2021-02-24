@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import Button from "../components/Button";
+import { GoogleIcon } from "../components/Icon";
 import Input from "../components/Input";
 import useInput from "../hooks/useInput";
+import { authService, firebaseInstance } from "../myFirebase";
 
 const Wrapper = styled.div``;
 
@@ -20,9 +22,39 @@ const Form = styled.form`
   }
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const OAuthButton = styled.button``;
+
 const Login = () => {
-  const id = useInput("");
-  const pw = useInput("");
+  const email = useInput("");
+  const password = useInput("");
+
+  const handleLogin = () => {
+    authService
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then((user) => {
+        // Signed in
+        // ...
+        console.log(user);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+      });
+  };
+
+  const socialLogin = async () => {
+    const provider = new firebaseInstance.auth.GoogleAuthProvider();
+    const data = authService.signInWithPopup(provider);
+    console.log(data);
+  };
 
   return (
     <Wrapper>
@@ -30,19 +62,25 @@ const Login = () => {
         <FormTitle>로그인</FormTitle>
         <Input
           autoFocus
-          value={id.value}
-          onChange={id.onChange}
+          value={email.value}
+          onChange={email.onChange}
           placeholder={"이메일을 입력하세요."}
           type={"email"}
         />
         <Input
-          value={pw.value}
-          onChange={pw.onChange}
+          value={password.value}
+          onChange={password.onChange}
           placeholder={"비밀번호를 입력하세요."}
           type={"password"}
         />
-        <Button text={"로그인"} />
+        <Button text={"로그인"} onClick={handleLogin} />
       </Form>
+
+      <ButtonContainer>
+        <OAuthButton onClick={socialLogin}>
+          <GoogleIcon width={30} height={30} />
+        </OAuthButton>
+      </ButtonContainer>
     </Wrapper>
   );
 };

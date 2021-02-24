@@ -8,10 +8,8 @@ import styled from "styled-components";
 // import home42 from "../img/home32.jpg";
 // import home31 from "../img/home42.jpg";
 // import home32 from "../img/home41.jpg";
-import ImageOverlay from "../components/ImageOverlay";
-import ImageCard from "../components/ImageCard";
 // import Carousel from "../components/Carousel";
-import Banner from "../components/Banner/Banner";
+import Banner from "components/Banner";
 
 const Wrapper = styled.div`
   width: 100vw;
