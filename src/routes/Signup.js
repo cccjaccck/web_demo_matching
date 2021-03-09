@@ -32,21 +32,20 @@ const Signup = () => {
   const confirm = useInput("");
 
   const handleSignup = () => {
-    if (email.value)
-      authService
-        .createUserWithEmailAndPassword(email.value, password.value)
-        .then((user) => {
-          // Signed in
-          // ...
-          console.log(user);
-        })
-        .catch((error) => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          // ..
-        });
+    authService
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then((user) => {
+        // Signed in
+        // ...
+        console.log("sign in", user);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ..
+      });
   };
 
   return (

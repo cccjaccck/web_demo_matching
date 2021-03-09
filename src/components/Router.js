@@ -3,7 +3,7 @@ import Login from "../routes/Login";
 import Signup from "../routes/Signup";
 import Home from "../routes/Home";
 
-const AppRouter = ({}) => {
+const AppRouter = () => {
   return (
     <Router>
       <Switch>

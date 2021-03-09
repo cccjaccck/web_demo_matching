@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LocalMallOutlinedIcon from "@material-ui/icons/LocalMallOutlined";
 import logo from "../../img/logo.png";
 import Menu from "./Menu";
+import { useIsLoggedIn, useLogOut, useUser } from "../../AuthContext";
 
 const Wrapper = styled.section`
   position: fixed;
@@ -54,12 +55,17 @@ const TopIcon = styled.span`
   /* maring-left: auto; */
 `;
 
-const Header = () => {
+const Header = ({}) => {
+  const user = useUser();
+  const isLoggedin = useIsLoggedIn();
+  const logout = useLogOut();
+
   return (
     <Wrapper>
       <Top>
+        <button onClick={logout}>로그아웃</button>
         <a href="/login">
-          <TopText>Guest</TopText>
+          <TopText>{user && (user.displayName ?? "Guest")}</TopText>
         </a>
         <TopIcon>
           <LocalMallOutlinedIcon />

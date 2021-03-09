@@ -5,8 +5,7 @@ import theme from "../styles/theme";
 import GlobalStyles from "../styles/GlobalStyles";
 import Header from "./Header";
 import { AuthProvider } from "../AuthContext";
-import { authService } from "../myFirebase";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,24 +17,20 @@ const Wrapper = styled.div`
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  useEffect(() => {
-    authService.onAuthStateChanged((user) => {
-      if (user) {
-        setIsLoggedIn(true);
-      } else {
-        setIsLoggedIn(false);
-      }
-      setInit(true);
-    });
-  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <AuthProvider>
+      <AuthProvider setInit={setInit}>
         <Wrapper>
-          <Header />
-          <AppRouter />
+          {init ? (
+            <>
+              <Header />
+              <AppRouter />
+            </>
+          ) : (
+            "Loadding..."
+          )}
           <Footer />
         </Wrapper>
       </AuthProvider>

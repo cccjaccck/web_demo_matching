@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { useLogIn, useSocialLogin } from "../AuthContext";
 import Button from "../components/Button";
 import { GoogleIcon } from "../components/Icon";
 import Input from "../components/Input";
 import useInput from "../hooks/useInput";
 import { authService, firebaseInstance } from "../myFirebase";
+import { Redirect } from "react-router-dom";
 
 const Wrapper = styled.div``;
 
@@ -11,7 +13,7 @@ const FormTitle = styled.div`
   font-size: 1.3em;
   margin: 0 0 10px 5px;
 `;
-const Form = styled.form`
+const Form = styled.div`
   max-width: 300px;
   width: 80vw;
   display: flex;
@@ -32,28 +34,28 @@ const OAuthButton = styled.button``;
 const Login = () => {
   const email = useInput("");
   const password = useInput("");
+  const socialLogin = useSocialLogin();
+  const login = useLogIn();
 
   const handleLogin = () => {
-    authService
-      .createUserWithEmailAndPassword(email.value, password.value)
-      .then((user) => {
-        // Signed in
-        // ...
-        console.log(user);
-      })
-      .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-        // ..
-      });
-  };
-
-  const socialLogin = async () => {
-    const provider = new firebaseInstance.auth.GoogleAuthProvider();
-    const data = authService.signInWithPopup(provider);
-    console.log(data);
+    try {
+      const aaa = authService
+        .signInWithEmailAndPassword(email.value, password.value)
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          if (errorCode === "auth/wrong-password") {
+            alert("Wrong password.");
+          } else {
+            alert(errorMessage);
+          }
+          console.log(error);
+        });
+      console.log("로그인 ", aaa);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
